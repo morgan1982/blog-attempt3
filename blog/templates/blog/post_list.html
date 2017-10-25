@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
 
-    <h1>Welcome to Index</h1>
-    <div>
-        <h1><a href="#">Django Girls Blog</a></h1>
+{% block content %}
+{% for post in posts %}
+<div class="post">
+    <div class="date">
+        <p>published: {{ post.published_date }}</p>
     </div>
-        {% for post in posts %}
-        <div>
-            <h1>{{ post }}</h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <h4>{{ post.published_date }}</h4>
-        </div>
-    {% endfor %}
-    <div>
-        <p>published: 14.06.2014</p>
-        <h2><a href="#">My first post</a></h2>
-        <p>Maecenas molestie rutrum quam ut auctor. Curabitur ultrices suscipit lacinia. In scelerisque, odio et volutpat mollis, sapien lacus placerat diam, eu accumsan ante sapien vitae nisi. Donec eu luctus mauris, ut volutpat elit. Etiam sit amet mattis nisl. Suspendisse non tellus diam. Cras ut lectus lobortis, eleifend tortor at, pellentesque ante. Phasellus ut orci vitae massa ultrices efficitur. Nunc nec porttitor lorem. Proin ullamcorper, lacus at tristique iaculis, quam nisl congue leo, eget pretium quam ipsum nec arcu. Donec nibh nibh, iaculis vitae mattis elementum, hendrerit sed sem. Praesent justo risus, pulvinar sit amet lorem eget, fringilla dictum leo</p>
-    </div>
-        <p>published: 15.06.2014</p>
-        <h2><a href="#">My second post</a></h2>
-        <p>Maecenas molestie rutrum quam ut auctor. Curabitur ultrices suscipit lacinia. In scelerisque, odio et volutpat mollis, sapien lacus placerat diam, eu accumsan ante sapien vitae nisi. Donec eu luctus mauris, ut volutpat elit. Etiam sit amet mattis nisl. Suspendisse non tellus diam. Cras ut lectus lobortis, eleifend tortor at, pellentesque ante. Phasellus ut orci vitae massa ultrices efficitur. Nunc nec porttitor lorem. Proin ullamcorper, lacus at tristique iaculis, quam nisl congue leo, eget pretium quam ipsum nec arcu. Donec nibh nibh, iaculis vitae mattis elementum, hendrerit sed sem. Praesent justo risus, pulvinar sit amet lorem eget, fringilla dictum leo</p>
-    </div>
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <p>{{ post.description|linebreaksbr }}</p>
+</div>
+{% endfor %}
+{% endblock %}
 
-</body>
-</html>
+
+
