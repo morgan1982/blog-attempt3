@@ -5,10 +5,18 @@
     <title>Blog</title>
 </head>
 <body>
+
     <h1>Welcome to Index</h1>
     <div>
         <h1><a href="#">Django Girls Blog</a></h1>
     </div>
+        {% for post in posts %}
+        <div>
+            <h1>{{ post }}</h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <h4>{{ post.published_date }}</h4>
+        </div>
+    {% endfor %}
     <div>
         <p>published: 14.06.2014</p>
         <h2><a href="#">My first post</a></h2>
